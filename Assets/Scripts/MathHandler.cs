@@ -15,6 +15,7 @@ public class MathHandler : MonoBehaviour
     public float colorScale;
     public string[] calculationArray;
     public List<GameObject> boxList = new List<GameObject>();
+    public List<BoxHandler> spaceList = new List<BoxHandler>();
     void Awake(){
         if (Instance == null)
         {
@@ -41,9 +42,6 @@ public class MathHandler : MonoBehaviour
         }
         UpdateTheScore();
         UpdateTheColor();
-        if(Input.GetKeyDown(KeyCode.Space)){
-            SwapBoxes();
-        }
     }
 
     public void SwapBoxes(){
@@ -160,7 +158,6 @@ public class MathHandler : MonoBehaviour
                 }
             }
         }
-
         return result;
     }
     public string[] FetchDataFromSpaces()
@@ -185,7 +182,6 @@ public class MathHandler : MonoBehaviour
             }
         }
     }
-
     return dataArray.ToArray();
 }
 
@@ -194,10 +190,10 @@ public class MathHandler : MonoBehaviour
         calculationArray = RemoveNulls(calculationArray);
         result = CalculateResult(calculationArray);
         if(result != 0){
-            resultText.text = "=   " + result.ToString();
+            resultText.text = result.ToString();
         }
         else{
-            resultText.text = "=   ";
+            resultText.text = " ";
         }
     }
 

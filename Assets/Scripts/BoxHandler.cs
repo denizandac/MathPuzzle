@@ -56,10 +56,10 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     void Update(){
         if(typeBool){
-            transform.GetComponent<Image>().color = new Color(0f,0.1f,0.5f,0.2f);
+            transform.GetComponent<Image>().color = new Color(0f,0.1f,0.5f,0.5f);
         }
         else{
-            transform.GetComponent<Image>().color = new Color(0.5f,0f,0.1f,0.2f);
+            transform.GetComponent<Image>().color = new Color(0.5f,0f,0.1f,0.5f);
         }
     }
     
