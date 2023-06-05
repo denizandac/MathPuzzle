@@ -24,7 +24,7 @@ public class Unimage : MonoBehaviour, IDropHandler
             //nonselected
             eventData.pointerDrag.transform.SetParent(transform);
             eventData.pointerDrag.GetComponent<BoxHandler>().ReturnToInitialPosition();
-            MathHandler.Instance.UpdateTheScore();
+            eventData.pointerDrag.GetComponent<BoxHandler>().inSpace = false;
         }
     }
 }

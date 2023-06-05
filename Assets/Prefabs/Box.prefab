@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1821958339616211714}
   m_Layer: 5
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -91,12 +91,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: {x: 0, y: 0, z: 0}
-  _initialPosition: {x: 0, y: 0, z: 0}
   _canvasGroup: {fileID: 0}
   _type: 0
   _textMesh: {fileID: 9006345637998435696}
+  _initialPosition: {x: 0, y: 0, z: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  typeBool: 0
+  inSpace: 0
   sign: 
   data: 0
+  lastIndex: 0
   willReturn: 0
 --- !u!1 &9006345637998435710
 GameObject:
