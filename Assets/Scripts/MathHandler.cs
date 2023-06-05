@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.UI;
 using TMPro;
 using System;
+using DG.Tweening;
 
 public class MathHandler : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class MathHandler : MonoBehaviour
     public int expextedResult, result;
     public Camera mainCamera;
     public TextMeshProUGUI resultText;
+    public TextMeshProUGUI expectedText;
     public GameObject unimage;
     public float colorScale;
     public string[] calculationArray;
@@ -34,7 +36,8 @@ public class MathHandler : MonoBehaviour
     void Start(){
         // array = RemoveNulls(array);
         // result = CalculateResult(array);
-        // resultText.text = "=   " + result.ToString();        
+        // resultText.text = "=   " + result.ToString();
+        expectedText.text = expextedResult.ToString();
     }
     void Update(){      
         if(result == expextedResult){
@@ -198,7 +201,9 @@ public class MathHandler : MonoBehaviour
     }
 
     public void UpdateTheColor(){
-        colorScale = (float)result / (float)expextedResult;
-        mainCamera.backgroundColor = new Color(0f,colorScale/2,0f,colorScale);
+        if(expextedResult != 0){
+        colorScale = (Math.Abs((float)(expextedResult-result)) / (Math.Abs((float)expextedResult)));
+        }
+        mainCamera.DOColor(new Color(colorScale/4, 1-colorScale, colorScale/20, 0.5f), 2f);
     }
 }

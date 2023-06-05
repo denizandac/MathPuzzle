@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler, IDropHandler
 {
@@ -40,6 +41,7 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     void Start()
     {
+        
         inSpace = false;
         _initialPosition = transform.position;
         if(_type == Type.number)
