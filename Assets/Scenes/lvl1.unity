@@ -626,7 +626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1821958339616211714, guid: 18ec0e85fa445354798dbea30766909c, type: 3}
       propertyPath: sign
-      value: '-'
+      value: +
       objectReference: {fileID: 0}
     - target: {fileID: -1821958339616211714, guid: 18ec0e85fa445354798dbea30766909c, type: 3}
       propertyPath: _type
@@ -876,7 +876,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -1821958339616211714, guid: 18ec0e85fa445354798dbea30766909c, type: 3}
       propertyPath: data
-      value: 7
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1821958339616211714, guid: 18ec0e85fa445354798dbea30766909c, type: 3}
+      propertyPath: sign
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9006345637218766952, guid: 18ec0e85fa445354798dbea30766909c, type: 3}
       propertyPath: m_Name
@@ -1336,7 +1340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604d825395238664a836c8a2fc01f7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expextedResult: 4
+  expextedResult: 8
   result: 0
   mainCamera: {fileID: 963194227}
   resultText: {fileID: 789966540}
@@ -2172,7 +2176,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -1821958339616211714, guid: 18ec0e85fa445354798dbea30766909c, type: 3}
       propertyPath: data
-      value: 11
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -1821958339616211714, guid: 18ec0e85fa445354798dbea30766909c, type: 3}
       propertyPath: sign
