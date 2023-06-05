@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ManageScene : MonoBehaviour
 {
-    private static ManageScene _instance;
+    public static ManageScene _instance;
     void Awake(){
         if(_instance == null){
             _instance = this;
@@ -21,5 +21,14 @@ public class ManageScene : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R)){
             SceneManager.LoadScene("temp level");
         }
+    }
+
+    public void openLevel(string levelName){
+        SceneManager.LoadScene(levelName);
+    }
+
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }

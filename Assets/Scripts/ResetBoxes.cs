@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class ResetBoxes : MonoBehaviour, IPointerClickHandler, IDropHandler
 {
     // Update is called once per frame
     public void OnPointerClick(PointerEventData eventData)
     {
-        SceneManager.LoadScene("temp level");
+        SceneManager.LoadScene("lvl3");
     }
     void IDropHandler.OnDrop(PointerEventData eventData)
     {
