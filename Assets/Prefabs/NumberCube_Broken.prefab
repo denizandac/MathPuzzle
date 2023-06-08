@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2723010064582927217}
   - component: {fileID: 9145733425131167429}
   - component: {fileID: 569085191098646581}
+  - component: {fileID: 3784853944866770683}
   m_Layer: 0
   m_Name: NumberCube_1_fracturepart6
   m_TagString: Untagged
@@ -83,6 +84,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &3784853944866770683
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2639962305110862962}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2677200687880042365
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +111,7 @@ GameObject:
   - component: {fileID: 1488971884721970718}
   - component: {fileID: 6895232585316789010}
   - component: {fileID: 4211432681191705108}
+  - component: {fileID: 4153572810252920606}
   m_Layer: 0
   m_Name: NumberCube_1_fracturepart2
   m_TagString: Untagged
@@ -166,6 +184,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &4153572810252920606
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677200687880042365}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2985115408969294730
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +211,7 @@ GameObject:
   - component: {fileID: 2804981004382254813}
   - component: {fileID: 4988736206647579345}
   - component: {fileID: 8558167652345128472}
+  - component: {fileID: 6569126954711803459}
   m_Layer: 0
   m_Name: NumberCube_1_fracturepart7
   m_TagString: Untagged
@@ -249,6 +284,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &6569126954711803459
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2985115408969294730}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3189044076892960887
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +311,7 @@ GameObject:
   - component: {fileID: 1706712258760331486}
   - component: {fileID: 8483647199421386459}
   - component: {fileID: 1636754963504917830}
+  - component: {fileID: 4629882247886067887}
   m_Layer: 0
   m_Name: NumberCube_1_fracturepart5
   m_TagString: Untagged
@@ -332,6 +384,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &4629882247886067887
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3189044076892960887}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4117975237019768888
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +411,7 @@ GameObject:
   - component: {fileID: 9029292703538731821}
   - component: {fileID: 8564434040319779440}
   - component: {fileID: 969163613631093114}
+  - component: {fileID: 3422189247301598556}
   m_Layer: 0
   m_Name: NumberCube_1_fracturepart1
   m_TagString: Untagged
@@ -415,6 +484,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &3422189247301598556
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4117975237019768888}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6169759435878246708
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +509,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6583354571059764138}
+  - component: {fileID: -3134440384438318621}
+  - component: {fileID: -3701487320153420113}
   m_Layer: 0
   m_Name: NumberCube_Broken
   m_TagString: Untagged
@@ -454,6 +541,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3134440384438318621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6169759435878246708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e28eea6da9fc149bc7f421dd1f047d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionForce: 0
+  explosionRadius: 0
+  _positions: []
+  _rotations: []
+  parentRb: {fileID: -3701487320153420113}
+--- !u!54 &-3701487320153420113
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6169759435878246708}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7052787369923371129
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +585,7 @@ GameObject:
   - component: {fileID: 1468493702983063047}
   - component: {fileID: 4866151656419511183}
   - component: {fileID: 1279864024482809534}
+  - component: {fileID: 2056041930962018434}
   m_Layer: 0
   m_Name: NumberCube_1_fracturepart8
   m_TagString: Untagged
@@ -537,6 +658,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &2056041930962018434
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7052787369923371129}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7151064438686211205
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +685,7 @@ GameObject:
   - component: {fileID: 460049341300331719}
   - component: {fileID: 296609707175366691}
   - component: {fileID: 8074226969204950170}
+  - component: {fileID: 2907534341588586838}
   m_Layer: 0
   m_Name: NumberCube_1_fracturepart4
   m_TagString: Untagged
@@ -620,6 +758,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &2907534341588586838
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7151064438686211205}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7304959821370640834
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +785,7 @@ GameObject:
   - component: {fileID: 3216799481859139344}
   - component: {fileID: 8292685050336646729}
   - component: {fileID: 310945660316727984}
+  - component: {fileID: 40061797923055342}
   m_Layer: 0
   m_Name: NumberCube_1_fracturepart3
   m_TagString: Untagged
@@ -703,3 +858,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &40061797923055342
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304959821370640834}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

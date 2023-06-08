@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class MathHandler : MonoBehaviour
 {
     public static MathHandler Instance;
-    public int expextedResult, result;
+    public int result;
     public Camera mainCamera;
     public TextMeshProUGUI resultText;
     public GameObject unimage;
@@ -40,7 +40,7 @@ public class MathHandler : MonoBehaviour
         // result = CalculateResult(array);
         // resultText.text = "=   " + result.ToString();
     }
-    void LateUpdate(){      
+    void Update(){      
         // if(result == expextedResult){
         //     GameManager.Instance.EndGame();
         // }
@@ -197,23 +197,21 @@ public class MathHandler : MonoBehaviour
         else{
             resultText.text = " ";
         }
-        foreach(Transform cube in resultList.transform){
-            int index = 0;
-            if(cube != null){
-                if(cube.GetComponent<NumberCube>().GetCubeValue() == result){
-                    Destroyable.instance.gameObject.SetActive(true);
-                    Destroyable.instance.InstantiateTheCube(cube.transform.position);
-                    Destroyable.instance.Activate();
-                    // resultList.RemoveAt(index);
-                    Destroy(cube.gameObject);
+        if(resultList.transform.childCount == 0){
+            //Debug.Log("Level Ended");
+            SceneManager.LoadScene("Start");
+        }
+        else{
+            for(int index = 0; index < resultList.transform.childCount; index++){
+                if(result == resultList.transform.GetChild(index).GetComponent<NumberCube>().GetCubeValue()){
+                    brokenCube.gameObject.SetActive(true);
+                    Destroyable.instance.InstantiateTheCube(resultList.transform.GetChild(index).transform.position);
+                    Destroy(resultList.transform.GetChild(index).gameObject);
+                    DropBoxes.instance.DropAboveBoxes(index);
+                    //drop fonksiyonu(index)
+                    //Debug.Log("Result is " + result);
                 }
             }
-            else{
-                //Debug.Log("All cubes Destroyed");
-                // level ending animation
-                SceneManager.LoadScene("Start"); //EDIT THIS
-            }
-            index++;
         }
     }
 

@@ -10,13 +10,14 @@ public class StackManager : MonoBehaviour
     private List<int> expectedResults = new List<int>();
     private void Start()
     {
-        expectedResults = new List<int>(){1,2,3,4,5,6,7};
+        expectedResults = new List<int>(){5,2,8};
         CreateRandomCubes();
+        DropBoxes.instance.CheckBoxes();
     }
     private void CreateRandomCubes()
     {
         Vector3 spawnPosition = _spawnPoint.position;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 3; i++)
         {
             GameObject go = Instantiate(_cubePrefab, spawnPosition, Quaternion.identity);
             go.transform.SetParent(_spawnPoint);
