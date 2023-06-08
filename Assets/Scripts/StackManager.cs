@@ -10,14 +10,30 @@ public class StackManager : MonoBehaviour
     private List<int> expectedResults = new List<int>();
     private void Start()
     {
-        expectedResults = new List<int>(){5,2,8};
+        switch (LevelManager.Instance.level)
+        {
+            case 1:
+                expectedResults = new List<int> { 1, 2, 3 };
+                break;
+            case 2:
+                expectedResults = new List<int> { 4, 5, 9 };
+                break;
+            case 3:
+                expectedResults = new List<int> { 2, 8, 9 };
+                break;
+            case 4:
+                expectedResults = new List<int> { 14, 7, 11, 2, 1 };
+                break;
+            default:
+                break;
+        }
         CreateRandomCubes();
         DropBoxes.instance.CheckBoxes();
     }
     private void CreateRandomCubes()
     {
         Vector3 spawnPosition = _spawnPoint.position;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < expectedResults.Count; i++)
         {
             GameObject go = Instantiate(_cubePrefab, spawnPosition, Quaternion.identity);
             go.transform.SetParent(_spawnPoint);
@@ -39,7 +55,6 @@ public class StackManager : MonoBehaviour
                 DropIndex = i;
                 _numberCubes.RemoveAt(i);
                 break;
-                //broken cube animation 
             }
         }
         // List<Transform> animationList = new List<Transform>();

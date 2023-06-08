@@ -16,8 +16,11 @@ public class ManageScene : MonoBehaviour
     }
     // Update is called once per frame
 
-    public void openLevel(string levelName){
-        SceneManager.LoadScene(levelName);
+    public void OpenLevel(int levelName){
+        string levelstr = levelName.ToString();
+        SceneManager.LoadScene("lvl"+levelstr);
+        LevelManager.Instance.level = levelName;
+        GameManager.Instance.gameState = GameManager.GameState.Playing;
     }
 
     void OnApplicationQuit()

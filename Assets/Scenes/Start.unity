@@ -344,12 +344,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 957725084}
         m_TargetAssemblyTypeName: ManageScene, Assembly-CSharp
-        m_MethodName: openLevel
-        m_Mode: 5
+        m_MethodName: OpenLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: lvl4
           m_BoolArgument: 0
@@ -572,12 +572,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 957725084}
         m_TargetAssemblyTypeName: ManageScene, Assembly-CSharp
-        m_MethodName: openLevel
-        m_Mode: 5
+        m_MethodName: OpenLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: lvl3
           m_BoolArgument: 0
@@ -1095,12 +1095,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 957725084}
         m_TargetAssemblyTypeName: ManageScene, Assembly-CSharp
-        m_MethodName: openLevel
-        m_Mode: 5
+        m_MethodName: OpenLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: lvl2
           m_BoolArgument: 0
@@ -1229,12 +1229,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 957725084}
         m_TargetAssemblyTypeName: ManageScene, Assembly-CSharp
-        m_MethodName: openLevel
-        m_Mode: 5
+        m_MethodName: OpenLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: lvl1
           m_BoolArgument: 0
@@ -1249,6 +1249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 957725083}
   - component: {fileID: 957725084}
+  - component: {fileID: 957725085}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1283,6 +1284,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388d2ebcfb3a8e74cbe47d26c865217f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &957725085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957725081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a6a6ad5fc9cd2543b078a94cb5ebddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,7 +1333,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.5, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1547,6 +1561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
+  levelComplete: {fileID: 0}
 --- !u!1 &1436649885
 GameObject:
   m_ObjectHideFlags: 0

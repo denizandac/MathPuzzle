@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameState gameState;
+    public GameObject levelComplete;
     public enum GameState
     {
         Playing,
@@ -43,9 +44,10 @@ public class GameManager : MonoBehaviour
     }
     public void EndGame(){
         gameState = GameState.GameOver;
-        SceneManager.LoadScene("Start");
         Application.Quit();
     }
-
-    
+    public void EndLevel()
+    {
+        gameState = GameState.GameOver;
+    }
 }

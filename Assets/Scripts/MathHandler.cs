@@ -20,6 +20,7 @@ public class MathHandler : MonoBehaviour
     public List<BoxHandler> spaceList = new List<BoxHandler>();
     public GameObject resultList;
     public GameObject brokenCube;
+    public GameObject levelPopUp;
     void Awake(){
         if (Instance == null)
         {
@@ -198,17 +199,17 @@ public class MathHandler : MonoBehaviour
             resultText.text = " ";
         }
         if(resultList.transform.childCount == 0){
-            //Debug.Log("Level Ended");
-            SceneManager.LoadScene("Start");
+            GameManager.Instance.EndLevel();
+            levelPopUp.gameObject.SetActive(true);
         }
-        else{
+        else
+        {
             for(int index = 0; index < resultList.transform.childCount; index++){
                 if(result == resultList.transform.GetChild(index).GetComponent<NumberCube>().GetCubeValue()){
                     brokenCube.gameObject.SetActive(true);
                     Destroyable.instance.InstantiateTheCube(resultList.transform.GetChild(index).transform.position);
                     Destroy(resultList.transform.GetChild(index).gameObject);
                     DropBoxes.instance.DropAboveBoxes(index);
-                    //drop fonksiyonu(index)
                     //Debug.Log("Result is " + result);
                 }
             }
