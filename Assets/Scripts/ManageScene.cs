@@ -15,13 +15,6 @@ public class ManageScene : MonoBehaviour
         }
     }
     // Update is called once per frame
-    
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.R)){
-            SceneManager.LoadScene("temp level");
-        }
-    }
 
     public void openLevel(string levelName){
         SceneManager.LoadScene(levelName);

@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class SpaceHandler : MonoBehaviour, IDropHandler
 {
@@ -55,30 +56,38 @@ public class SpaceHandler : MonoBehaviour, IDropHandler
     }
 
     public void OnDrop(PointerEventData eventData){
-        if (!isOccupied){
-            if (eventData.pointerDrag){
-                if(eventData.pointerDrag.GetComponent<BoxHandler>().typeBool == typeBool){
-                    eventData.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
-                    eventData.pointerDrag.transform.SetParent(transform);
+        GameObject draggedObject = eventData.pointerDrag;
+        if (draggedObject){
+            if (!isOccupied){
+                if(draggedObject.GetComponent<BoxHandler>().typeBool == typeBool){
+                    draggedObject.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
+                    draggedObject.transform.SetParent(transform);
+                    draggedObject.transform.DOScale(1.2f, 0.5f)
+                        .SetEase(Ease.OutElastic)
+                        .OnComplete(()=>{
+                    draggedObject.transform.DOScale(1f, 0.2f);
+                });
                     if(typeBool){
-                        data = eventData.pointerDrag.GetComponent<BoxHandler>().data;
+                        data = draggedObject.GetComponent<BoxHandler>().data;
                     }
                     else{
-                    sign = eventData.pointerDrag.GetComponent<BoxHandler>().sign;
+                    sign = draggedObject.GetComponent<BoxHandler>().sign;
                     }
                     isOccupied = true;
-                    eventData.pointerDrag.GetComponent<BoxHandler>().inSpace = true;
+                    draggedObject.GetComponent<BoxHandler>().inSpace = true;
                 }
                 else{
-                    eventData.pointerDrag.transform.SetParent(Unimage.Instance.transform);
-                    eventData.pointerDrag.GetComponent<BoxHandler>().ReturnToInitialPosition();
-                    eventData.pointerDrag.GetComponent<BoxHandler>().inSpace = false;
+                    draggedObject.transform.DOShakePosition(0.5f, 3f, 10, 0f, true, false);
+                    draggedObject.transform.SetParent(Unimage.Instance.transform);
+                    draggedObject.GetComponent<BoxHandler>().ReturnToInitialPosition();
+                    draggedObject.GetComponent<BoxHandler>().inSpace = false;
                 }
+                
             }
-        }
-        else{
-            eventData.pointerDrag.transform.SetParent(Unimage.Instance.transform);
-            eventData.pointerDrag.GetComponent<BoxHandler>().ReturnToInitialPosition();
+            else{
+                draggedObject.transform.SetParent(Unimage.Instance.transform);
+                draggedObject.GetComponent<BoxHandler>().ReturnToInitialPosition();
+            }
         }
     }
 }

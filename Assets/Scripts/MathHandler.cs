@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class MathHandler : MonoBehaviour
 {
@@ -12,12 +13,13 @@ public class MathHandler : MonoBehaviour
     public int expextedResult, result;
     public Camera mainCamera;
     public TextMeshProUGUI resultText;
-    public TextMeshProUGUI expectedText;
     public GameObject unimage;
     public float colorScale;
     public string[] calculationArray;
     public List<GameObject> boxList = new List<GameObject>();
     public List<BoxHandler> spaceList = new List<BoxHandler>();
+    public GameObject resultList;
+    public GameObject brokenCube;
     void Awake(){
         if (Instance == null)
         {
@@ -37,14 +39,13 @@ public class MathHandler : MonoBehaviour
         // array = RemoveNulls(array);
         // result = CalculateResult(array);
         // resultText.text = "=   " + result.ToString();
-        expectedText.text = expextedResult.ToString();
     }
-    void Update(){      
-        if(result == expextedResult){
-            GameManager.Instance.EndGame();
-        }
-        UpdateTheScore();
-        UpdateTheColor();
+    void LateUpdate(){      
+        // if(result == expextedResult){
+        //     GameManager.Instance.EndGame();
+        // }
+        UpdateTheResult();
+        //UpdateTheColor();
     }
 
     public void SwapBoxes(){
@@ -67,9 +68,7 @@ public class MathHandler : MonoBehaviour
         }
     }
 
-    // public void PullBackBoxes(){
-    //     return;
-    // }
+
         
     public static string[] RemoveNulls(string[] array)  
         {
@@ -188,7 +187,7 @@ public class MathHandler : MonoBehaviour
     return dataArray.ToArray();
 }
 
-    public void UpdateTheScore(){
+    public void UpdateTheResult(){
         calculationArray = FetchDataFromSpaces();
         calculationArray = RemoveNulls(calculationArray);
         result = CalculateResult(calculationArray);
@@ -198,12 +197,30 @@ public class MathHandler : MonoBehaviour
         else{
             resultText.text = " ";
         }
+        foreach(Transform cube in resultList.transform){
+            int index = 0;
+            if(cube != null){
+                if(cube.GetComponent<NumberCube>().GetCubeValue() == result){
+                    Destroyable.instance.gameObject.SetActive(true);
+                    Destroyable.instance.InstantiateTheCube(cube.transform.position);
+                    Destroyable.instance.Activate();
+                    // resultList.RemoveAt(index);
+                    Destroy(cube.gameObject);
+                }
+            }
+            else{
+                //Debug.Log("All cubes Destroyed");
+                // level ending animation
+                SceneManager.LoadScene("Start"); //EDIT THIS
+            }
+            index++;
+        }
     }
 
-    public void UpdateTheColor(){
-        if(expextedResult != 0){
-        colorScale = (Math.Abs((float)(expextedResult-result)) / (Math.Abs((float)expextedResult)));
-        }
-        mainCamera.DOColor(new Color(colorScale/4, 1-colorScale, colorScale/20, 0.5f), 2f);
-    }
+    // public void UpdateTheColor(){
+    //     if(expextedResult != 0){
+    //     colorScale = (Math.Abs((float)(expextedResult-result)) / (Math.Abs((float)expextedResult)));
+    //     }
+    //     mainCamera.DOColor(new Color(colorScale/4, 1-colorScale, colorScale/20, 0.5f), 2f);
+    // }
 }

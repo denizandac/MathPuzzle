@@ -13,7 +13,6 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     [SerializeField] private Type _type;
     [SerializeField] private TextMeshProUGUI _textMesh;
     public Vector3 _initialPosition;
-    public Vector3 lastPosition;
     public bool typeBool;
     public bool inSpace;
     public string sign;
@@ -68,6 +67,7 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     public void ReturnToInitialPosition()
     {
         transform.position = _initialPosition;
+        inSpace = false;
     }
 
 
@@ -100,7 +100,6 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
             lastIndex = transform.parent.GetSiblingIndex();
             transform.parent.SetAsLastSibling();
         }
-        lastPosition = transform.position;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -125,42 +124,74 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     public void OnDrop(PointerEventData eventData)
     {
         //Swap function
-        if (eventData.pointerDrag)
+        GameObject draggedObject = eventData.pointerDrag;
+        if (draggedObject)
         {
-            if (eventData.pointerDrag.GetComponent<BoxHandler>().typeBool == typeBool)
+            if (draggedObject.GetComponent<BoxHandler>().typeBool == typeBool)
             {
-                if (eventData.pointerDrag.GetComponent<BoxHandler>().typeBool)
+                if (draggedObject.GetComponent<BoxHandler>().typeBool)
                 {
-                    int temp = eventData.pointerDrag.GetComponent<BoxHandler>().data;
-                    eventData.pointerDrag.GetComponent<BoxHandler>().data = data;
+                    int temp = draggedObject.GetComponent<BoxHandler>().data;
+                    draggedObject.GetComponent<BoxHandler>().data = data;
                     data = temp;
-                    eventData.pointerDrag.GetComponent<BoxHandler>()._textMesh.text = eventData.pointerDrag.GetComponent<BoxHandler>().data.ToString();
+                    draggedObject.GetComponent<BoxHandler>()._textMesh.text = draggedObject.GetComponent<BoxHandler>().data.ToString();
                     if(inSpace == true){
-                        transform.parent.GetComponent<SpaceHandler>().data = data;
+                        if(draggedObject.GetComponent<BoxHandler>().inSpace == true){
+                            transform.parent.GetComponent<SpaceHandler>().data = data;
+                            draggedObject.transform.parent.GetComponent<SpaceHandler>().data = data;
+                        }
+                        else{
+                            transform.parent.GetComponent<SpaceHandler>().data = data;
+                        }
                     }
-                    if(eventData.pointerDrag.GetComponent<BoxHandler>().inSpace == true){
-                        eventData.pointerDrag.transform.parent.GetComponent<SpaceHandler>().data = data;
+                    else{
+                        if(draggedObject.GetComponent<BoxHandler>().inSpace == true){
+                            draggedObject.transform.parent.GetComponent<SpaceHandler>().data = data;
+                        }
                     }
                     _textMesh.text = data.ToString();
                 }
                 else
                 {
-                    string temp = eventData.pointerDrag.GetComponent<BoxHandler>().sign;
-                    eventData.pointerDrag.GetComponent<BoxHandler>().sign = sign;
+                    string temp = draggedObject.GetComponent<BoxHandler>().sign;
+                    draggedObject.GetComponent<BoxHandler>().sign = sign;
                     sign = temp;
-                    eventData.pointerDrag.GetComponent<BoxHandler>()._textMesh.text = eventData.pointerDrag.GetComponent<BoxHandler>().sign;
+                    draggedObject.GetComponent<BoxHandler>()._textMesh.text = draggedObject.GetComponent<BoxHandler>().sign;
                     if(inSpace == true){
-                        transform.parent.GetComponent<SpaceHandler>().sign = sign;
+                        if(draggedObject.GetComponent<BoxHandler>().inSpace == true){
+                            transform.parent.GetComponent<SpaceHandler>().sign = sign;
+                            draggedObject.transform.parent.GetComponent<SpaceHandler>().sign = sign;
+                        }
+                        else{
+                            transform.parent.GetComponent<SpaceHandler>().sign = sign;
+                        }
                     }
-                    if(eventData.pointerDrag.GetComponent<BoxHandler>().inSpace == true){
-                        eventData.pointerDrag.transform.parent.GetComponent<SpaceHandler>().sign = sign;
+                    else{
+                        if(draggedObject.GetComponent<BoxHandler>().inSpace == true){
+                            draggedObject.transform.parent.GetComponent<SpaceHandler>().sign = sign;
+                        }
                     }
                     _textMesh.text = sign;
                 }
+                draggedObject.transform.DOScale(1.2f, 0.5f)
+                .SetEase(Ease.OutElastic)
+                .OnComplete(()=>{
+                    draggedObject.transform.DOScale(1f, 0.2f);
+                });
+                transform.DOScale(1.2f, 0.5f)
+                .SetEase(Ease.OutElastic)
+                .OnComplete(()=>{
+                    transform.DOScale(1f, 0.2f);
+                });
+                //sound effect - canNOT swap
+            }
+            else{
+                draggedObject.transform.DOShakePosition(0.5f, 3f, 10, 0f, true, false);
+            transform.DOShakePosition(0.5f, 3f, 10, 0f, true, false);
             }
         }
-        eventData.pointerDrag.transform.SetParent(Unimage.Instance.transform);
-        eventData.pointerDrag.GetComponent<BoxHandler>().ReturnToInitialPosition();
+        draggedObject.transform.SetParent(Unimage.Instance.transform);
+        draggedObject.GetComponent<BoxHandler>().ReturnToInitialPosition();
     }
     #endregion
 }

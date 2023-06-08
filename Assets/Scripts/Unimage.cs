@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class Unimage : MonoBehaviour, IDropHandler
 {
@@ -19,12 +20,13 @@ public class Unimage : MonoBehaviour, IDropHandler
     }
     void IDropHandler.OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag)
+        GameObject draggedObject = eventData.pointerDrag;
+        if (draggedObject)
         {
             //nonselected
-            eventData.pointerDrag.transform.SetParent(transform);
-            eventData.pointerDrag.GetComponent<BoxHandler>().ReturnToInitialPosition();
-            eventData.pointerDrag.GetComponent<BoxHandler>().inSpace = false;
+            draggedObject.transform.SetParent(transform);
+            draggedObject.GetComponent<BoxHandler>().ReturnToInitialPosition();
+            draggedObject.transform.DOShakePosition(0.5f, 3f, 10, 0f, true, false);
         }
     }
 }
