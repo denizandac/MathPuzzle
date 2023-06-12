@@ -120,3 +120,5 @@ MonoBehaviour:
   typeBool: 0
   _type: 0
   canvasGroup: {fileID: 0}
+  colorInt: {r: 1, g: 1, b: 1, a: 0.74509805}
+  colorSign: {r: 1, g: 1, b: 1, a: 0.8}

@@ -13,11 +13,10 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     [SerializeField] private TextMeshProUGUI _textMesh;
     public Type type;
     public Vector3 _initialPosition;
-    public bool typeBool;
-    public bool inSpace;
+    public bool typeBool, inSpace;
     public string sign;
-    public int data;
-    public int lastIndex;
+    public int data, lastIndex;
+    public Color colorInt, colorSign;
     public enum Type
     {
         number,
@@ -37,13 +36,14 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
             _textMesh = gameObject.AddComponent<TextMeshProUGUI>();
         }
         inSpace = false;
-        _initialPosition = transform.position;
+        _initialPosition = GetComponent<RectTransform>().position;
     }
 
     void Start()
     {
 
-
+        colorInt = new Color(0f, 0.1f, 0.5f, 0.5f);
+        colorSign = new Color(0.5f, 0f, 0.1f, 0.5f);
         if (type == Type.number)
         {
             typeBool = true;
@@ -60,11 +60,11 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     {
         if (typeBool)
         {
-            transform.GetComponent<Image>().color = new Color(0f, 0.1f, 0.5f, 0.5f);
+            transform.GetComponent<Image>().color = colorInt;
         }
         else
         {
-            transform.GetComponent<Image>().color = new Color(0.5f, 0f, 0.1f, 0.5f);
+            transform.GetComponent<Image>().color = colorSign;
         }
     }
 

@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9006345637218766957
 CanvasRenderer:
@@ -100,6 +100,8 @@ MonoBehaviour:
   sign: 
   data: 0
   lastIndex: 0
+  colorInt: {r: 0.01419878, g: 0, b: 1, a: 0.5882353}
+  colorSign: {r: 1, g: 0.1273585, b: 0.1273585, a: 0.5882353}
   willReturn: 0
 --- !u!1 &9006345637998435710
 GameObject:
