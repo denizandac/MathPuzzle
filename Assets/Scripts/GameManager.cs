@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
         Paused,
         GameOver
     }
-    void Awake(){
+    void Awake()
+    {
         if (Instance == null)
         {
             Instance = this;
@@ -27,7 +28,8 @@ public class GameManager : MonoBehaviour
         }
         gameState = GameState.Playing;
     }
-    void Update(){
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gameState == GameState.Playing)
@@ -42,12 +44,13 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void EndGame(){
+    public void EndGame()
+    {
         gameState = GameState.GameOver;
         Application.Quit();
     }
     public void EndLevel()
     {
-        gameState = GameState.GameOver;
+        gameState = GameState.Paused;
     }
 }

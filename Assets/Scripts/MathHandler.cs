@@ -10,18 +10,16 @@ using UnityEngine.SceneManagement;
 public class MathHandler : MonoBehaviour
 {
     public static MathHandler Instance;
-    public int result;
+    public int result, expextedResult;
     public Camera mainCamera;
-    public TextMeshProUGUI resultText;
-    public GameObject unimage;
+    public TextMeshProUGUI resultText, expectedResultText;
+    public GameObject unimage, levelPopUp;
     public float colorScale;
     public string[] calculationArray;
     public List<GameObject> boxList = new List<GameObject>();
     public List<BoxHandler> spaceList = new List<BoxHandler>();
-    public GameObject resultList;
-    public GameObject brokenCube;
-    public GameObject levelPopUp;
-    void Awake(){
+    void Awake()
+    {
         if (Instance == null)
         {
             Instance = this;
@@ -30,30 +28,37 @@ public class MathHandler : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if(unimage == null)
+        if (unimage == null)
         {
             unimage = GameObject.Find("Unimage");
         }
     }
 
-    void Start(){
+    void Start()
+    {
         // array = RemoveNulls(array);
         // result = CalculateResult(array);
         // resultText.text = "=   " + result.ToString();
+        expectedResultText.text = expextedResult.ToString();
     }
-    void Update(){      
-        // if(result == expextedResult){
-        //     GameManager.Instance.EndGame();
-        // }
+    void Update()
+    {
+        if (result == expextedResult)
+        {
+            levelPopUp.SetActive(true);
+            GameManager.Instance.EndLevel();
+        }
         UpdateTheResult();
         //UpdateTheColor();
     }
 
-    public void SwapBoxes(){
+    public void SwapBoxes()
+    {
         boxList.Clear();
         foreach (Transform child in unimage.transform)
         {
-            if(child.gameObject.CompareTag("Box")){
+            if (child.gameObject.CompareTag("Box"))
+            {
                 boxList.Add(child.gameObject);
             }
         }
@@ -70,38 +75,42 @@ public class MathHandler : MonoBehaviour
     }
 
 
-        
-    public static string[] RemoveNulls(string[] array)  
+
+    public static string[] RemoveNulls(string[] array)
+    {
+        List<string> result = new List<string>();
+
+        foreach (string element in array)
         {
-            List<string> result = new List<string>();
-
-            foreach (string element in array)
+            if (!string.IsNullOrWhiteSpace(element))
             {
-                if (!string.IsNullOrWhiteSpace(element))
-                {
-                    result.Add(element);
-                }
+                result.Add(element);
             }
-
-            return result.ToArray();
         }
+
+        return result.ToArray();
+    }
 
     public static int CalculateResult(string[] array)
     {
         int result = 0;
         bool isAddition = true;
         bool isNumSet = false;
-        if(array.Length == 0){
+        if (array.Length == 0)
+        {
             //Debug.Log("Error: Empty array");
             return 0;
         }
-        else{string elementLast = array[array.Length - 1];
-            if(elementLast == "+" || elementLast == "-"){
+        else
+        {
+            string elementLast = array[array.Length - 1];
+            if (elementLast == "+" || elementLast == "-")
+            {
                 //Debug.Log("Error: Invalid last element '" + elementLast + "' at index " + array.Length);
                 return 0;
             }
         }
-        
+
         for (int i = 0; i < array.Length; i++)
         {
             string element = array[i];
@@ -164,55 +173,42 @@ public class MathHandler : MonoBehaviour
         return result;
     }
     public string[] FetchDataFromSpaces()
-{
-    List<string> dataArray = new List<string>();
-
-    foreach (Transform child in unimage.transform)
     {
-        SpaceHandler spaceHandler = child.GetComponent<SpaceHandler>();
-        if (spaceHandler != null)
+        List<string> dataArray = new List<string>();
+
+        foreach (Transform child in unimage.transform)
         {
-            if (spaceHandler.typeBool)
+            SpaceHandler spaceHandler = child.GetComponent<SpaceHandler>();
+            if (spaceHandler != null)
             {
-                if (spaceHandler.data != 0)  // Ignore null (zero) values
+                if (spaceHandler.typeBool)
                 {
-                    dataArray.Add(spaceHandler.data.ToString());
+                    if (spaceHandler.data != 0)  // Ignore null (zero) values
+                    {
+                        dataArray.Add(spaceHandler.data.ToString());
+                    }
+                }
+                else
+                {
+                    dataArray.Add(spaceHandler.sign);
                 }
             }
-            else
-            {
-                dataArray.Add(spaceHandler.sign);
-            }
         }
+        return dataArray.ToArray();
     }
-    return dataArray.ToArray();
-}
 
-    public void UpdateTheResult(){
+    public void UpdateTheResult()
+    {
         calculationArray = FetchDataFromSpaces();
         calculationArray = RemoveNulls(calculationArray);
         result = CalculateResult(calculationArray);
-        if(result != 0){
+        if (result != 0)
+        {
             resultText.text = result.ToString();
-        }
-        else{
-            resultText.text = " ";
-        }
-        if(resultList.transform.childCount == 0){
-            GameManager.Instance.EndLevel();
-            levelPopUp.gameObject.SetActive(true);
         }
         else
         {
-            for(int index = 0; index < resultList.transform.childCount; index++){
-                if(result == resultList.transform.GetChild(index).GetComponent<NumberCube>().GetCubeValue()){
-                    brokenCube.gameObject.SetActive(true);
-                    Destroyable.instance.InstantiateTheCube(resultList.transform.GetChild(index).transform.position);
-                    Destroy(resultList.transform.GetChild(index).gameObject);
-                    DropBoxes.instance.DropAboveBoxes(index);
-                    //Debug.Log("Result is " + result);
-                }
-            }
+            resultText.text = " ";
         }
     }
 
