@@ -10,8 +10,8 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 {
     [SerializeField] private Vector3 _offset;
     [SerializeField] private CanvasGroup _canvasGroup;
-    [SerializeField] private Type _type;
     [SerializeField] private TextMeshProUGUI _textMesh;
+    public Type type;
     public Vector3 _initialPosition;
     public bool typeBool;
     public bool inSpace;
@@ -32,44 +32,56 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
             _canvasGroup = gameObject.AddComponent<CanvasGroup>();
         }
         _canvasGroup = gameObject.GetComponent<CanvasGroup>();
-        if(gameObject.GetComponentInChildren<TextMeshProUGUI>() == null)
+        if (gameObject.GetComponentInChildren<TextMeshProUGUI>() == null)
         {
             _textMesh = gameObject.AddComponent<TextMeshProUGUI>();
         }
+        inSpace = false;
+        _initialPosition = transform.position;
     }
 
     void Start()
     {
-        
-        inSpace = false;
-        _initialPosition = transform.position;
-        if(_type == Type.number)
+
+
+        if (type == Type.number)
         {
             typeBool = true;
             _textMesh.text = data.ToString();
         }
-        else if(_type == Type.sign)
+        else if (type == Type.sign)
         {
             _textMesh.text = sign;
             typeBool = false;
         }
     }
 
-    void Update(){
-        if(typeBool){
-            transform.GetComponent<Image>().color = new Color(0f,0.1f,0.5f,0.5f);
+    void Update()
+    {
+        if (typeBool)
+        {
+            transform.GetComponent<Image>().color = new Color(0f, 0.1f, 0.5f, 0.5f);
         }
-        else{
-            transform.GetComponent<Image>().color = new Color(0.5f,0f,0.1f,0.5f);
+        else
+        {
+            transform.GetComponent<Image>().color = new Color(0.5f, 0f, 0.1f, 0.5f);
         }
     }
-    
+
     public void ReturnToInitialPosition()
     {
         transform.position = _initialPosition;
         inSpace = false;
     }
+    public void SetText(string text)
+    {
+        _textMesh.text = text;
+    }
 
+    public void SetInitialPosition(Vector3 position)
+    {
+        _initialPosition = position;
+    }
 
     // #region Highlighting
     // public void OnMouseEnter()
@@ -88,15 +100,16 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     public void OnPointerDown(PointerEventData eventData)
     {
         _offset = transform.position - Input.mousePosition;
-        transform.GetComponent<Image>().color = new Color(0,0.5f,0.5f, 0.8f);
+        transform.GetComponent<Image>().color = new Color(0, 0.5f, 0.5f, 0.8f);
         _canvasGroup.blocksRaycasts = false;
-        if(transform.parent == Unimage.Instance.transform)
+        if (transform.parent == Unimage.Instance.transform)
         {
             lastIndex = transform.GetSiblingIndex();
             transform.SetAsLastSibling();
         }
         //for non-used case, image in unimage
-        else{
+        else
+        {
             lastIndex = transform.parent.GetSiblingIndex();
             transform.parent.SetAsLastSibling();
         }
@@ -111,12 +124,13 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     {
         transform.position = Input.mousePosition + _offset;
         _canvasGroup.blocksRaycasts = true;
-        if(transform.parent == Unimage.Instance.transform)
+        if (transform.parent == Unimage.Instance.transform)
         {
             transform.SetSiblingIndex(lastIndex);
         }
         //for non-used case, image in unimage
-        else{
+        else
+        {
             transform.parent.SetSiblingIndex(lastIndex);
         }
         lastIndex = 0;
@@ -135,17 +149,22 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
                     draggedObject.GetComponent<BoxHandler>().data = data;
                     data = temp;
                     draggedObject.GetComponent<BoxHandler>()._textMesh.text = draggedObject.GetComponent<BoxHandler>().data.ToString();
-                    if(inSpace == true){
-                        if(draggedObject.GetComponent<BoxHandler>().inSpace == true){
+                    if (inSpace == true)
+                    {
+                        if (draggedObject.GetComponent<BoxHandler>().inSpace == true)
+                        {
                             transform.parent.GetComponent<SpaceHandler>().data = data;
                             draggedObject.transform.parent.GetComponent<SpaceHandler>().data = data;
                         }
-                        else{
+                        else
+                        {
                             transform.parent.GetComponent<SpaceHandler>().data = data;
                         }
                     }
-                    else{
-                        if(draggedObject.GetComponent<BoxHandler>().inSpace == true){
+                    else
+                    {
+                        if (draggedObject.GetComponent<BoxHandler>().inSpace == true)
+                        {
                             draggedObject.transform.parent.GetComponent<SpaceHandler>().data = data;
                         }
                     }
@@ -157,17 +176,22 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
                     draggedObject.GetComponent<BoxHandler>().sign = sign;
                     sign = temp;
                     draggedObject.GetComponent<BoxHandler>()._textMesh.text = draggedObject.GetComponent<BoxHandler>().sign;
-                    if(inSpace == true){
-                        if(draggedObject.GetComponent<BoxHandler>().inSpace == true){
+                    if (inSpace == true)
+                    {
+                        if (draggedObject.GetComponent<BoxHandler>().inSpace == true)
+                        {
                             transform.parent.GetComponent<SpaceHandler>().sign = sign;
                             draggedObject.transform.parent.GetComponent<SpaceHandler>().sign = sign;
                         }
-                        else{
+                        else
+                        {
                             transform.parent.GetComponent<SpaceHandler>().sign = sign;
                         }
                     }
-                    else{
-                        if(draggedObject.GetComponent<BoxHandler>().inSpace == true){
+                    else
+                    {
+                        if (draggedObject.GetComponent<BoxHandler>().inSpace == true)
+                        {
                             draggedObject.transform.parent.GetComponent<SpaceHandler>().sign = sign;
                         }
                     }
@@ -175,19 +199,22 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
                 }
                 draggedObject.transform.DOScale(1.2f, 0.5f)
                 .SetEase(Ease.OutElastic)
-                .OnComplete(()=>{
+                .OnComplete(() =>
+                {
                     draggedObject.transform.DOScale(1f, 0.2f);
                 });
                 transform.DOScale(1.2f, 0.5f)
                 .SetEase(Ease.OutElastic)
-                .OnComplete(()=>{
+                .OnComplete(() =>
+                {
                     transform.DOScale(1f, 0.2f);
                 });
                 //sound effect - canNOT swap
             }
-            else{
+            else
+            {
                 draggedObject.transform.DOShakePosition(0.5f, 3f, 10, 0f, true, false);
-            transform.DOShakePosition(0.5f, 3f, 10, 0f, true, false);
+                transform.DOShakePosition(0.5f, 3f, 10, 0f, true, false);
             }
         }
         draggedObject.transform.SetParent(Unimage.Instance.transform);

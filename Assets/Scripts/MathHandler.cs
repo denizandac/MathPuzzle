@@ -17,7 +17,6 @@ public class MathHandler : MonoBehaviour
     public float colorScale;
     public string[] calculationArray;
     public List<GameObject> boxList = new List<GameObject>();
-    public List<BoxHandler> spaceList = new List<BoxHandler>();
     void Awake()
     {
         if (Instance == null)
