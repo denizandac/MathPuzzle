@@ -273,8 +273,8 @@ MonoBehaviour:
   result: 0
   expextedResult: 3
   mainCamera: {fileID: 963194227}
-  resultText: {fileID: 0}
-  expectedResultText: {fileID: 0}
+  resultText: {fileID: 2049255694}
+  expectedResultText: {fileID: 7896984350150923383}
   unimage: {fileID: 868036990}
   levelPopUp: {fileID: 1206076438}
   colorScale: 0
@@ -488,6 +488,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f68141d4a3c73e41b06a9f9e3dd8c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2049255694 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7896984349495884456, guid: 624297511401f464fa938265ddde7ab5, type: 3}
+  m_PrefabInstance: {fileID: 7896984350150923364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7896984350150923369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7896984350150923364
@@ -777,5 +788,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f68141d4a3c73e41b06a9f9e3dd8c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7896984350150923383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7403906135189404508, guid: 624297511401f464fa938265ddde7ab5, type: 3}
+  m_PrefabInstance: {fileID: 7896984350150923364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7896984350150923368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
