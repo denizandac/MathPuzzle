@@ -12,14 +12,9 @@ public class SpaceHandler : MonoBehaviour, IDropHandler
     public int data;
     public string sign;
     public bool typeBool;
-    public Type _type;
     public CanvasGroup canvasGroup;
     public Color colorInt, colorSign;
-    public enum Type
-    {
-        number,
-        sign
-    }
+
     void Awake()
     {
         if (gameObject.GetComponent<CanvasGroup>() == null)
@@ -30,7 +25,7 @@ public class SpaceHandler : MonoBehaviour, IDropHandler
     }
     void Start()
     {
-        if (_type == Type.number)
+        if (typeBool)
         {
             transform.GetComponent<Image>().color = colorInt;
         }

@@ -18,21 +18,18 @@ public class LevelGenerator : MonoBehaviour
             BoxHandler tempBox = Instantiate(boxPrefab, transform).GetComponent<BoxHandler>();
             if (datas[i] == "+")
             {
-                tempBox.type = BoxHandler.Type.sign;
                 tempBox.sign = "+";
                 tempBox.data = 0;
                 tempBox.typeBool = false;
             }
             else if (datas[i] == "-")
             {
-                tempBox.type = BoxHandler.Type.sign;
                 tempBox.sign = "-";
                 tempBox.data = 0;
                 tempBox.typeBool = false;
             }
             else
             {
-                tempBox.type = BoxHandler.Type.number;
                 tempBox.sign = "";
                 tempBox.data = int.Parse(datas[i]);
                 tempBox.typeBool = true;

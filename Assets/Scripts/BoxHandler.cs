@@ -11,17 +11,12 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     [SerializeField] private Vector3 _offset;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private TextMeshProUGUI _textMesh;
-    public Type type;
     public Vector3 _initialPosition;
     public bool typeBool, inSpace;
     public string sign;
     public int data, lastIndex;
     public Color colorInt, colorSign;
-    public enum Type
-    {
-        number,
-        sign
-    }
+
     public bool willReturn = false;
 
     private void Awake()
@@ -44,15 +39,13 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
         colorInt = new Color(0f, 0.1f, 0.5f, 0.5f);
         colorSign = new Color(0.5f, 0f, 0.1f, 0.5f);
-        if (type == Type.number)
+        if (typeBool)
         {
-            typeBool = true;
             _textMesh.text = data.ToString();
         }
-        else if (type == Type.sign)
+        else
         {
             _textMesh.text = sign;
-            typeBool = false;
         }
     }
 
