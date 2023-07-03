@@ -109,6 +109,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7896984351509840837}
     m_Modifications:
+    - target: {fileID: 10914302936418976, guid: 34381a964bb427244bf392c5e143d6a3, type: 3}
+      propertyPath: _canvasGroup
+      value: 
+      objectReference: {fileID: 3171012581204465522}
     - target: {fileID: 282933681652765188, guid: 34381a964bb427244bf392c5e143d6a3, type: 3}
       propertyPath: m_Name
       value: Unimage
@@ -197,11 +201,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3394441920416775514, guid: 34381a964bb427244bf392c5e143d6a3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34381a964bb427244bf392c5e143d6a3, type: 3}
 --- !u!224 &1239314042276084970 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 282933681652765189, guid: 34381a964bb427244bf392c5e143d6a3, type: 3}
+  m_PrefabInstance: {fileID: 1360020159308033775}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &3171012581204465522 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 4530181443066821021, guid: 34381a964bb427244bf392c5e143d6a3, type: 3}
   m_PrefabInstance: {fileID: 1360020159308033775}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2787388480550530219

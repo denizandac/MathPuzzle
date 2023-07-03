@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class CantDrag : MonoBehaviour, IDropHandler
 {
+    public GameObject unimage;
 
     // Update is called once per frame
     public void OnDrop(PointerEventData eventData)
@@ -13,10 +14,10 @@ public class CantDrag : MonoBehaviour, IDropHandler
         GameObject draggedObject = eventData.pointerDrag;
         if (draggedObject)
         {
+            BoxHandler boxHandler = draggedObject.GetComponent<BoxHandler>();
             draggedObject.transform.DOShakePosition(0.5f, 3f, 10, 0f, true, false);
-            draggedObject.transform.SetParent(Unimage.Instance.transform);
-            draggedObject.GetComponent<BoxHandler>().ReturnToInitialPosition();
-            draggedObject.GetComponent<BoxHandler>().inSpace = false;
+            boxHandler.ReturnToInitialPosition();
+            boxHandler.inSpace = false;
         }
     }
 }
