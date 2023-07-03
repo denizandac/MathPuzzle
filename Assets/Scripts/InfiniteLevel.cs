@@ -33,28 +33,29 @@ public class InfiniteLevel : MonoBehaviour
         }
         for (int i = 0; i < boxList.Count; i++)
         {
-            if (boxList[i].GetComponent<BoxHandler>().typeBool)
+            BoxHandler boxHandler = boxList[i].GetComponent<BoxHandler>();
+            if (boxHandler.typeBool)
             {
                 if (temp1 != 0)
                 {
-                    boxList[i].GetComponent<BoxHandler>().data = temp1;
-                    boxList[i].GetComponent<BoxHandler>().SetText(temp1.ToString());
+                    boxHandler.data = temp1;
+                    boxHandler.SetText(temp1.ToString());
                     temp1 = 0;
                 }
                 else if (temp2 != 0)
                 {
-                    boxList[i].GetComponent<BoxHandler>().data = temp2;
-                    boxList[i].GetComponent<BoxHandler>().SetText(temp2.ToString());
+                    boxHandler.data = temp2;
+                    boxHandler.SetText(temp2.ToString());
                     temp2 = 0;
                 }
                 else if (temp3 != 0)
                 {
-                    boxList[i].GetComponent<BoxHandler>().data = temp3;
-                    boxList[i].GetComponent<BoxHandler>().SetText(temp3.ToString());
+                    boxHandler.data = temp3;
+                    boxHandler.SetText(temp3.ToString());
                     temp3 = 0;
                 }
             }
-            boxList[i].GetComponent<BoxHandler>().ReturnToInitialPosition();
+            boxHandler.ReturnToInitialPosition();
             //MathHandler.Instance.SwapBoxes();
         }
     }
