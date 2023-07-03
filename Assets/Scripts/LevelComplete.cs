@@ -6,10 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelComplete : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public static LevelComplete instance;
-
-
     void Start()
     {
         transform.gameObject.SetActive(false);

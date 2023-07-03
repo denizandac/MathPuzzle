@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameState gameState;
+    public ManageScene manageScene;
     public enum GameState
     {
         Playing,
@@ -27,22 +28,7 @@ public class GameManager : MonoBehaviour
         }
         gameState = GameState.Playing;
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (gameState == GameState.Playing)
-            {
-                gameState = GameState.Paused;
-                Time.timeScale = 0;
-            }
-            else if (gameState == GameState.Paused)
-            {
-                gameState = GameState.Playing;
-                Time.timeScale = 1f;
-            }
-        }
-    }
+
     public void EndGame()
     {
         gameState = GameState.GameOver;

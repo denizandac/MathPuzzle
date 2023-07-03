@@ -1082,7 +1082,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6a6ad5fc9cd2543b078a94cb5ebddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,6 +1211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
+  manageScene: {fileID: 0}
 --- !u!1001 &1250416275
 PrefabInstance:
   m_ObjectHideFlags: 0

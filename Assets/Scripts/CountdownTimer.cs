@@ -8,7 +8,7 @@ public class CountdownTimer : MonoBehaviour
     public float timeRemaining;
     public TextMeshProUGUI timeText;
 
-    void Update()
+    public void UpdateTimer()
     {
         float minutes = Mathf.FloorToInt(timeRemaining / 60);
         float seconds = Mathf.FloorToInt(timeRemaining % 60);
@@ -23,5 +23,9 @@ public class CountdownTimer : MonoBehaviour
             GameManager.Instance.EndLevel();
             //Show fail pop up
         }
+    }
+    void Update()
+    {
+        UpdateTimer();
     }
 }

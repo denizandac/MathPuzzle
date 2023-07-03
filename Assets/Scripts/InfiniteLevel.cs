@@ -55,7 +55,7 @@ public class InfiniteLevel : MonoBehaviour
                 }
             }
             boxList[i].GetComponent<BoxHandler>().ReturnToInitialPosition();
-            MathHandler.Instance.SwapBoxes();
+            //MathHandler.Instance.SwapBoxes();
         }
     }
 }

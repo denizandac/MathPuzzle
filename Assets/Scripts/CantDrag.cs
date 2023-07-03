@@ -16,6 +16,7 @@ public class CantDrag : MonoBehaviour, IDropHandler
         {
             BoxHandler boxHandler = draggedObject.GetComponent<BoxHandler>();
             draggedObject.transform.DOShakePosition(0.5f, 3f, 10, 0f, true, false);
+            draggedObject.transform.SetParent(transform);
             boxHandler.ReturnToInitialPosition();
             boxHandler.inSpace = false;
         }

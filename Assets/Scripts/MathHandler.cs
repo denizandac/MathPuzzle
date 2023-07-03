@@ -15,7 +15,7 @@ public class MathHandler : MonoBehaviour
     public TextMeshProUGUI resultText, expectedResultText;
     public GameObject unimage, levelPopUp;
     public float colorScale;
-    public string[] calculationArray;
+    public List<string> calculationArray;
     public List<GameObject> boxList = new List<GameObject>();
     void Awake()
     {
@@ -35,47 +35,36 @@ public class MathHandler : MonoBehaviour
 
     void Start()
     {
-        // array = RemoveNulls(array);
-        // result = CalculateResult(array);
-        // resultText.text = "=   " + result.ToString();
         expectedResultText.text = expextedResult.ToString();
     }
     void Update()
     {
-        if (result == expextedResult)
-        {
-            levelPopUp.SetActive(true);
-            GameManager.Instance.EndLevel();
-        }
         UpdateTheResult();
         //UpdateTheColor();
     }
 
-    public void SwapBoxes()
-    {
-        boxList.Clear();
-        foreach (Transform child in unimage.transform)
-        {
-            if (child.gameObject.CompareTag("Box"))
-            {
-                boxList.Add(child.gameObject);
-            }
-        }
-        for (int i = 0; i < boxList.Count; i++)
-        {
-            int randomIndex = UnityEngine.Random.Range(i, boxList.Count);
-            Vector3 tempPosition = boxList[i].transform.position;
-            Vector3 tempInitialPosition = boxList[i].GetComponent<BoxHandler>()._initialPosition;
-            boxList[i].transform.position = boxList[randomIndex].transform.position;
-            boxList[randomIndex].transform.position = tempPosition;
-            boxList[i].GetComponent<BoxHandler>()._initialPosition = boxList[randomIndex].GetComponent<BoxHandler>()._initialPosition;
-            boxList[randomIndex].GetComponent<BoxHandler>()._initialPosition = tempInitialPosition;
-        }
-    }
-
-
-
-    public static string[] RemoveNulls(string[] array)
+    // public void SwapBoxes()
+    // {
+    //     boxList.Clear();
+    //     foreach (Transform child in unimage.transform)
+    //     {
+    //         if (child.gameObject.CompareTag("Box"))
+    //         {
+    //             boxList.Add(child.gameObject);
+    //         }
+    //     }
+    //     for (int i = 0; i < boxList.Count; i++)
+    //     {
+    //         int randomIndex = UnityEngine.Random.Range(i, boxList.Count);
+    //         Vector3 tempPosition = boxList[i].transform.position;
+    //         Vector3 tempInitialPosition = boxList[i].GetComponent<BoxHandler>()._initialPosition;
+    //         boxList[i].transform.position = boxList[randomIndex].transform.position;
+    //         boxList[randomIndex].transform.position = tempPosition;
+    //         boxList[i].GetComponent<BoxHandler>()._initialPosition = boxList[randomIndex].GetComponent<BoxHandler>()._initialPosition;
+    //         boxList[randomIndex].GetComponent<BoxHandler>()._initialPosition = tempInitialPosition;
+    //     }
+    // }
+    public static List<string> RemoveNulls(List<string> array)
     {
         List<string> result = new List<string>();
 
@@ -87,22 +76,22 @@ public class MathHandler : MonoBehaviour
             }
         }
 
-        return result.ToArray();
+        return result;
     }
 
-    public static int CalculateResult(string[] array)
+    public static int CalculateResult(List<string> array)
     {
         int result = 0;
         bool isAddition = true;
         bool isNumSet = false;
-        if (array.Length == 0)
+        if (array.Count == 0)
         {
             //Debug.Log("Error: Empty array");
             return 0;
         }
         else
         {
-            string elementLast = array[array.Length - 1];
+            string elementLast = array[array.Count - 1];
             if (elementLast == "+" || elementLast == "-")
             {
                 //Debug.Log("Error: Invalid last element '" + elementLast + "' at index " + array.Length);
@@ -110,7 +99,7 @@ public class MathHandler : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < array.Length; i++)
+        for (int i = 0; i < array.Count; i++)
         {
             string element = array[i];
 
@@ -171,7 +160,7 @@ public class MathHandler : MonoBehaviour
         }
         return result;
     }
-    public string[] FetchDataFromSpaces()
+    public List<string> FetchDataFromSpaces()
     {
         List<string> dataArray = new List<string>();
 
@@ -193,7 +182,7 @@ public class MathHandler : MonoBehaviour
                 }
             }
         }
-        return dataArray.ToArray();
+        return dataArray;
     }
 
     public void UpdateTheResult()
@@ -209,12 +198,10 @@ public class MathHandler : MonoBehaviour
         {
             resultText.text = " ";
         }
+        if (result == expextedResult)
+        {
+            levelPopUp.SetActive(true);
+            GameManager.Instance.EndLevel();
+        }
     }
-
-    // public void UpdateTheColor(){
-    //     if(expextedResult != 0){
-    //     colorScale = (Math.Abs((float)(expextedResult-result)) / (Math.Abs((float)expextedResult)));
-    //     }
-    //     mainCamera.DOColor(new Color(colorScale/4, 1-colorScale, colorScale/20, 0.5f), 2f);
-    // }
 }

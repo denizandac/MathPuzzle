@@ -15,51 +15,21 @@ public class SpaceHandler : MonoBehaviour, IDropHandler
     public CanvasGroup canvasGroup;
     public Color colorInt, colorSign;
     public GameObject unimage;
-
-    void Awake()
-    {
-        if (gameObject.GetComponent<CanvasGroup>() == null)
-        {
-            canvasGroup = gameObject.AddComponent<CanvasGroup>();
-        }
-        canvasGroup = gameObject.GetComponent<CanvasGroup>();
-    }
-    void Start()
-    {
-        if (typeBool)
-        {
-            transform.GetComponent<Image>().color = colorInt;
-        }
-        else
-        {
-            transform.GetComponent<Image>().color = colorSign;
-        }
-    }
     void Update()
     {
-        if (transform.childCount > 0)
-        {
-            isOccupied = true;
-        }
-        else
+        CheckIfOccupied();
+    }
+    public void CheckIfOccupied()
+    {
+        if (transform.childCount == 0)
         {
             isOccupied = false;
-        }
-        if (!isOccupied)
-        {
             data = 0;
             sign = "";
         }
-    }
-    public void DataUpdate()
-    {
-        if (typeBool)
-        {
-            data = transform.GetChild(0).GetComponent<BoxHandler>().data;
-        }
         else
         {
-            sign = transform.GetChild(0).GetComponent<BoxHandler>().sign;
+            isOccupied = true;
         }
     }
 

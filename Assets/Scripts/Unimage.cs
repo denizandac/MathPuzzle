@@ -6,7 +6,6 @@ using DG.Tweening;
 
 public class Unimage : MonoBehaviour, IDropHandler
 {
-    // Start is called before the first frame update
     void IDropHandler.OnDrop(PointerEventData eventData)
     {
         GameObject draggedObject = eventData.pointerDrag;

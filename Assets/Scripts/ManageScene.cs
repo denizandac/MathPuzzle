@@ -5,25 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class ManageScene : MonoBehaviour
 {
-    public static ManageScene _instance;
-    void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-    // Update is called once per frame
-
+    // All instances in 1 (in gameManager)
+    // void Awake()
+    // {
+    //     GameManager.Instance.manageScene = this;
+    // }
     public void OpenLevel(int levelName)
     {
         string levelstr = levelName.ToString();
         SceneManager.LoadScene("L " + levelstr);
-        LevelManager.Instance.level = levelName;
         GameManager.Instance.gameState = GameManager.GameState.Playing;
     }
 
