@@ -13,7 +13,6 @@ public class SpaceHandler : MonoBehaviour, IDropHandler
     public string sign;
     public bool typeBool;
     public CanvasGroup canvasGroup;
-    public Color colorInt, colorSign;
     public GameObject unimage;
     void Update()
     {
@@ -77,5 +76,6 @@ public class SpaceHandler : MonoBehaviour, IDropHandler
                 boxHandler.ReturnToInitialPosition();
             }
         }
+        //GameManager.Instance.mathHandler.UpdateTheResult();
     }
 }

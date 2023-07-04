@@ -17,7 +17,8 @@ public class InfiniteLevel : MonoBehaviour
     void GetNewSet()
     {
         expectedResult = Random.Range(-30, 30);
-        MathHandler.Instance.expextedResult = expectedResult;
+        GameManager.Instance.mathHandler.expectedResult = expectedResult;
+        GameManager.Instance.mathHandler.expectedResultText.text = expectedResult.ToString();
         boxList.Clear();
         temp1 = Random.Range(-20, 20);
         expectedResult -= temp1;
@@ -56,7 +57,7 @@ public class InfiniteLevel : MonoBehaviour
                 }
             }
             boxHandler.ReturnToInitialPosition();
-            //MathHandler.Instance.SwapBoxes();
+            GameManager.Instance.mathHandler.SwapBoxes();
         }
     }
 }

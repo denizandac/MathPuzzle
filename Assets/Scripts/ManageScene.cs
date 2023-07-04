@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class ManageScene : MonoBehaviour
 {
     // All instances in 1 (in gameManager)
-    // void Awake()
-    // {
-    //     GameManager.Instance.manageScene = this;
-    // }
+    void Start()
+    {
+        GameManager.Instance.manageScene = this;
+    }
     public void OpenLevel(int levelName)
     {
         string levelstr = levelName.ToString();

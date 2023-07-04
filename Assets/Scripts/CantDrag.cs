@@ -20,5 +20,6 @@ public class CantDrag : MonoBehaviour, IDropHandler
             boxHandler.ReturnToInitialPosition();
             boxHandler.inSpace = false;
         }
+        //GameManager.Instance.mathHandler.UpdateTheResult();
     }
 }

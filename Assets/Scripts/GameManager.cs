@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameState gameState;
     public ManageScene manageScene;
+    public MathHandler mathHandler;
     public enum GameState
     {
         Playing,

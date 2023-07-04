@@ -11,14 +11,14 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public Vector3 _initialPosition;
     public bool typeBool, inSpace;
+    public bool willReturn = false;
     public string sign;
     public int data, lastIndex;
-    public Color colorInt, colorSign;
     public GameObject unimage;
+
     [SerializeField] private Vector3 _offset;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private TextMeshProUGUI _textMesh;
-    public bool willReturn = false;
 
     private void Awake()
     {
@@ -70,6 +70,7 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
             lastIndex = transform.parent.GetSiblingIndex();
             transform.parent.SetAsLastSibling();
         }
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -91,6 +92,7 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
             transform.parent.SetSiblingIndex(lastIndex);
         }
         lastIndex = 0;
+        //GameManager.Instance.mathHandler.UpdateTheResult();
     }
     public void OnDrop(PointerEventData eventData)
     {
@@ -179,6 +181,7 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         }
         draggedObject.transform.SetParent(unimage.transform);
         draggedObject.GetComponent<BoxHandler>().ReturnToInitialPosition();
+        //GameManager.Instance.mathHandler.UpdateTheResult();
     }
     #endregion
 }

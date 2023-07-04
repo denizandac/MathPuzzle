@@ -9,61 +9,48 @@ using UnityEngine.SceneManagement;
 
 public class MathHandler : MonoBehaviour
 {
-    public static MathHandler Instance;
-    public int result, expextedResult;
+    public int result, expectedResult;
     public Camera mainCamera;
     public TextMeshProUGUI resultText, expectedResultText;
     public GameObject unimage, levelPopUp;
     public float colorScale;
     public List<string> calculationArray;
     public List<GameObject> boxList = new List<GameObject>();
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        if (unimage == null)
-        {
-            unimage = GameObject.Find("Unimage");
-        }
-    }
 
+   
     void Start()
     {
-        expectedResultText.text = expextedResult.ToString();
+        GameManager.Instance.mathHandler = this;
+        expectedResultText.text = expectedResult.ToString();
     }
+
     void Update()
     {
         UpdateTheResult();
-        //UpdateTheColor();
     }
-
-    // public void SwapBoxes()
-    // {
-    //     boxList.Clear();
-    //     foreach (Transform child in unimage.transform)
-    //     {
-    //         if (child.gameObject.CompareTag("Box"))
-    //         {
-    //             boxList.Add(child.gameObject);
-    //         }
-    //     }
-    //     for (int i = 0; i < boxList.Count; i++)
-    //     {
-    //         int randomIndex = UnityEngine.Random.Range(i, boxList.Count);
-    //         Vector3 tempPosition = boxList[i].transform.position;
-    //         Vector3 tempInitialPosition = boxList[i].GetComponent<BoxHandler>()._initialPosition;
-    //         boxList[i].transform.position = boxList[randomIndex].transform.position;
-    //         boxList[randomIndex].transform.position = tempPosition;
-    //         boxList[i].GetComponent<BoxHandler>()._initialPosition = boxList[randomIndex].GetComponent<BoxHandler>()._initialPosition;
-    //         boxList[randomIndex].GetComponent<BoxHandler>()._initialPosition = tempInitialPosition;
-    //     }
-    // }
+    public void SwapBoxes()
+    {
+        boxList.Clear();
+        foreach (Transform child in unimage.transform)
+        {
+            if (child.gameObject.CompareTag("Box"))
+            {
+                boxList.Add(child.gameObject);
+            }
+        }
+        for (int i = 0; i < boxList.Count; i++)
+        {
+            int randomIndex = UnityEngine.Random.Range(i, boxList.Count);
+            BoxHandler boxHandler = boxList[i].GetComponent<BoxHandler>();
+            BoxHandler randomBoxHandler = boxList[randomIndex].GetComponent<BoxHandler>();
+            Vector3 tempPosition = boxList[i].transform.position;
+            Vector3 tempInitialPosition = boxHandler._initialPosition;
+            boxList[i].transform.position = boxList[randomIndex].transform.position;
+            boxList[randomIndex].transform.position = tempPosition;
+            boxHandler._initialPosition = randomBoxHandler._initialPosition;
+            randomBoxHandler._initialPosition = tempInitialPosition;
+        }
+    }
     public static List<string> RemoveNulls(List<string> array)
     {
         List<string> result = new List<string>();
@@ -198,7 +185,7 @@ public class MathHandler : MonoBehaviour
         {
             resultText.text = " ";
         }
-        if (result == expextedResult)
+        if (result == expectedResult)
         {
             levelPopUp.SetActive(true);
             GameManager.Instance.EndLevel();

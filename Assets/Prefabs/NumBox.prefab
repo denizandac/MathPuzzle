@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1821958339616211714}
   - component: {fileID: 6363493976723558339}
   m_Layer: 5
-  m_Name: Box
+  m_Name: NumBox
   m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,18 +92,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialPosition: {x: 0, y: 0, z: 0}
-  typeBool: 0
+  typeBool: 1
   inSpace: 0
+  willReturn: 0
   sign: 
-  data: 0
+  data: 2
   lastIndex: 0
-  colorInt: {r: 0, g: 0.101960786, b: 0.5019608, a: 0.29803923}
-  colorSign: {r: 0.5019608, g: 0, b: 0.101960786, a: 0.29803923}
+  colorInt: {r: 0.32941177, g: 0.32941177, b: 1, a: 1}
+  colorSign: {r: 1, g: 0.32941177, b: 0.32941177, a: 1}
   unimage: {fileID: 0}
   _offset: {x: 0, y: 0, z: 0}
   _canvasGroup: {fileID: 6363493976723558339}
   _textMesh: {fileID: 9006345637998435696}
-  willReturn: 0
 --- !u!225 &6363493976723558339
 CanvasGroup:
   m_ObjectHideFlags: 0
