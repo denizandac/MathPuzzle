@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour
     public ManageScene manageScene;
     public MathHandler mathHandler;
     public InfiniteLevel infiniteLevel;
+    public ScoreCounter scoreCounter;
     public int Score = 0;
+
 
     public enum GameState
     {

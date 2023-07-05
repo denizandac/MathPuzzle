@@ -48,6 +48,12 @@ public class MathHandler : MonoBehaviour
                     spaceHandler.sign = "";
                 }
                 //take back to their initial position
+                if (spaceHandler.isOccupied)
+                {
+                    BoxHandler boxHandler = spaceHandler.GetComponentInChildren<BoxHandler>();
+                    boxHandler.transform.SetParent(unimage.transform);
+                    boxHandler.ReturnToInitialPosition();
+                }
             }
         }   
     }
@@ -213,7 +219,11 @@ public class MathHandler : MonoBehaviour
             if (isInfiniteLevel)
             {
                 GameManager.Instance.Score++;
+                GameManager.Instance.scoreCounter.UpdateScore();
                 countdownTimer.timeRemaining += GameManager.Instance.infiniteLevel.timeAdded;
+                GetBackBoxes();
+                SwapBoxes();
+                GameManager.Instance.infiniteLevel.GetNewSet();
             }
             else {
                 levelPopUp.SetActive(true);
