@@ -737,6 +737,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!225 &732768835 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 411998096011623571, guid: 624297511401f464fa938265ddde7ab5, type: 3}
+  m_PrefabInstance: {fileID: 317262954}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &732768836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 411998096011623572, guid: 624297511401f464fa938265ddde7ab5, type: 3}
+  m_PrefabInstance: {fileID: 317262954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &738244003
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,6 +791,8 @@ MonoBehaviour:
   willEnd: 0
   timeAdded: 0
   seconds: 2
+  invisImage: {fileID: 732768836}
+  canvasGroup: {fileID: 732768835}
 --- !u!4 &738244005
 Transform:
   m_ObjectHideFlags: 0

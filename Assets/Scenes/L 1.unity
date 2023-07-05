@@ -489,6 +489,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &317262959 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 411998096011623571, guid: 624297511401f464fa938265ddde7ab5, type: 3}
+  m_PrefabInstance: {fileID: 317262954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &317262961 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1239314042276084970, guid: 624297511401f464fa938265ddde7ab5, type: 3}
@@ -645,6 +650,8 @@ MonoBehaviour:
   willEnd: 0
   timeAdded: 0
   seconds: 2
+  invisImage: {fileID: 1260171892}
+  canvasGroup: {fileID: 317262959}
 --- !u!4 &738244005
 Transform:
   m_ObjectHideFlags: 0
@@ -840,6 +847,11 @@ MonoBehaviour:
   countdownTimer: {fileID: 0}
   audioManager: {fileID: 0}
   Score: 0
+--- !u!1 &1260171892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 411998096011623572, guid: 624297511401f464fa938265ddde7ab5, type: 3}
+  m_PrefabInstance: {fileID: 317262954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1380400282 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6816675024207110880, guid: 624297511401f464fa938265ddde7ab5, type: 3}

@@ -21,6 +21,8 @@ public class MathHandler : MonoBehaviour
     public bool willEnd = false;
     public bool timeAdded = false;
     public float seconds = 2f;
+    public GameObject invisImage;
+    public CanvasGroup canvasGroup;
 
     void Start()
     {
@@ -228,6 +230,8 @@ public class MathHandler : MonoBehaviour
         }
         if (result == expectedResult && !timeAdded)
         {
+            canvasGroup.blocksRaycasts = true;
+            invisImage.transform.SetAsLastSibling();
             if (isInfiniteLevel)
             {
                 countdownTimer.timeRemaining += GameManager.Instance.infiniteLevel.timeAdded;
@@ -257,5 +261,6 @@ public class MathHandler : MonoBehaviour
             levelPopUp.SetActive(true);
             GameManager.Instance.EndLevel();
         }
+        canvasGroup.blocksRaycasts = false;
     }
 }

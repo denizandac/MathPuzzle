@@ -1071,6 +1071,8 @@ MonoBehaviour:
   willEnd: 0
   timeAdded: 0
   seconds: 2
+  invisImage: {fileID: 1917514284}
+  canvasGroup: {fileID: 1917514283}
 --- !u!4 &738244005
 Transform:
   m_ObjectHideFlags: 0
@@ -1815,3 +1817,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18ec0e85fa445354798dbea30766909c, type: 3}
+--- !u!225 &1917514283 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 411998096011623571, guid: 624297511401f464fa938265ddde7ab5, type: 3}
+  m_PrefabInstance: {fileID: 317262954}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1917514284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 411998096011623572, guid: 624297511401f464fa938265ddde7ab5, type: 3}
+  m_PrefabInstance: {fileID: 317262954}
+  m_PrefabAsset: {fileID: 0}

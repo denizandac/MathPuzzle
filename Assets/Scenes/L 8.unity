@@ -1183,6 +1183,8 @@ MonoBehaviour:
   willEnd: 0
   timeAdded: 0
   seconds: 2
+  invisImage: {fileID: 1514451531}
+  canvasGroup: {fileID: 1514451533}
 --- !u!4 &738244005
 Transform:
   m_ObjectHideFlags: 0
@@ -1623,6 +1625,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 718ead45b18fb134f80c4687e71703e8, type: 3}
+--- !u!1 &1514451531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 411998096011623572, guid: 624297511401f464fa938265ddde7ab5, type: 3}
+  m_PrefabInstance: {fileID: 317262954}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1514451533 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 411998096011623571, guid: 624297511401f464fa938265ddde7ab5, type: 3}
+  m_PrefabInstance: {fileID: 317262954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1736237407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1760,7 +1772,7 @@ RectTransform:
   m_Children:
   - {fileID: 99429862}
   m_Father: {fileID: 317262961}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
