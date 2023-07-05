@@ -228,7 +228,16 @@ public class MathHandler : MonoBehaviour
         }
         if (result == expectedResult && !timeAdded)
         {
-            countdownTimer.timeRemaining += GameManager.Instance.infiniteLevel.timeAdded;
+            if (isInfiniteLevel)
+            {
+                countdownTimer.timeRemaining += GameManager.Instance.infiniteLevel.timeAdded;
+                GameManager.Instance.Score++;
+                GameManager.Instance.scoreCounter.UpdateScore();
+            }
+            else
+            {
+                countdownTimer.PauseTimer();
+            }
             willEnd = true;
             timeAdded = true;
         }
@@ -238,8 +247,6 @@ public class MathHandler : MonoBehaviour
         timeAdded = false;
         if (isInfiniteLevel)
         {
-            GameManager.Instance.Score++;
-            GameManager.Instance.scoreCounter.UpdateScore();
             GetBackBoxes();
             SwapBoxes();
             GameManager.Instance.infiniteLevel.GetNewSet();
