@@ -379,8 +379,7 @@ MonoBehaviour:
   temp3: 0
   expectedResult: 0
   result: 0
-  score: 0
-  time: 0
+  timeAdded: 10
   unimage: {fileID: 317262956}
   boxList: []
 --- !u!4 &226094545
@@ -989,6 +988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604d825395238664a836c8a2fc01f7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfiniteLevel: 1
   result: 0
   expectedResult: 1
   mainCamera: {fileID: 963194227}
@@ -999,6 +999,7 @@ MonoBehaviour:
   colorScale: 0
   calculationArray: []
   boxList: []
+  countdownTimer: {fileID: 1131212495}
 --- !u!4 &738244005
 Transform:
   m_ObjectHideFlags: 0
@@ -1259,6 +1260,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 5, z: 0}
+--- !u!114 &1131212495 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6816675024207110880, guid: 624297511401f464fa938265ddde7ab5, type: 3}
+  m_PrefabInstance: {fileID: 317262954}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6c32ce86cc021419485b51c970dbaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1152143644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1318,8 @@ MonoBehaviour:
   gameState: 0
   manageScene: {fileID: 957725082}
   mathHandler: {fileID: 738244004}
+  infiniteLevel: {fileID: 0}
+  Score: 0
 --- !u!1001 &1263127205
 PrefabInstance:
   m_ObjectHideFlags: 0

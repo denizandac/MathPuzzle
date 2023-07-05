@@ -945,7 +945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   result: 0
-  expectedResult: -4
+  expectedResult: 2
   mainCamera: {fileID: 963194227}
   resultText: {fileID: 317262958}
   expectedResultText: {fileID: 317262957}

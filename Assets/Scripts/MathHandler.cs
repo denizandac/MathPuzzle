@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class MathHandler : MonoBehaviour
 {
+    public bool isInfiniteLevel;
     public int result, expectedResult;
     public Camera mainCamera;
     public TextMeshProUGUI resultText, expectedResultText;
@@ -16,6 +17,7 @@ public class MathHandler : MonoBehaviour
     public float colorScale;
     public List<string> calculationArray;
     public List<GameObject> boxList = new List<GameObject>();
+    public CountdownTimer countdownTimer;
 
    
     void Start()
@@ -27,6 +29,27 @@ public class MathHandler : MonoBehaviour
     void Update()
     {
         UpdateTheResult();
+    }
+    public void GetBackBoxes()
+    {
+        SpaceHandler spaceHandler = null;
+        foreach (Transform child in unimage.transform)
+        {
+            if (child.gameObject.CompareTag("Space"))
+            {
+                spaceHandler = child.gameObject.GetComponent<SpaceHandler>();
+                
+                if (spaceHandler.typeBool)
+                {
+                    spaceHandler.data = 0;
+                }
+                else
+                {
+                    spaceHandler.sign = "";
+                }
+                //take back to their initial position
+            }
+        }   
     }
     public void SwapBoxes()
     {
@@ -187,8 +210,15 @@ public class MathHandler : MonoBehaviour
         }
         if (result == expectedResult)
         {
-            levelPopUp.SetActive(true);
-            GameManager.Instance.EndLevel();
+            if (isInfiniteLevel)
+            {
+                GameManager.Instance.Score++;
+                countdownTimer.timeRemaining += GameManager.Instance.infiniteLevel.timeAdded;
+            }
+            else {
+                levelPopUp.SetActive(true);
+                GameManager.Instance.EndLevel();
+            }
         }
     }
 }

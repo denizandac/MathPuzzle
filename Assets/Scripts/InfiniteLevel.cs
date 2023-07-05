@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class InfiniteLevel : MonoBehaviour
 {
-    public int temp1, temp2, temp3, expectedResult, result, score;
-    public float time;
+    public int temp1, temp2, temp3, expectedResult, result;
+    public float timeAdded;
     public GameObject unimage;
     public List<GameObject> boxList = new List<GameObject>();
+    
 
     void Start()
     {
+        GameManager.Instance.infiniteLevel = this;
         GetNewSet();
     }
 
-    void GetNewSet()
+    public void GetNewSet()
     {
         expectedResult = Random.Range(-30, 30);
         GameManager.Instance.mathHandler.expectedResult = expectedResult;
@@ -56,7 +58,6 @@ public class InfiniteLevel : MonoBehaviour
                     temp3 = 0;
                 }
             }
-            boxHandler.ReturnToInitialPosition();
             GameManager.Instance.mathHandler.SwapBoxes();
         }
     }

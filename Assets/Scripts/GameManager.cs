@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public GameState gameState;
     public ManageScene manageScene;
     public MathHandler mathHandler;
+    public InfiniteLevel infiniteLevel;
+    public int Score = 0;
+
     public enum GameState
     {
         Playing,
