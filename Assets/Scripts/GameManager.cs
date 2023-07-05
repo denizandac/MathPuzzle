@@ -13,8 +13,9 @@ public class GameManager : MonoBehaviour
     public MathHandler mathHandler;
     public InfiniteLevel infiniteLevel;
     public ScoreCounter scoreCounter;
+    public CountdownTimer countdownTimer;
+    public AudioManager audioManager;
     public int Score = 0;
-
 
     public enum GameState
     {

@@ -18,8 +18,10 @@ public class MathHandler : MonoBehaviour
     public List<string> calculationArray;
     public List<GameObject> boxList = new List<GameObject>();
     public CountdownTimer countdownTimer;
+    public bool willEnd = false;
+    public bool timeAdded = false;
+    public float seconds = 2f;
 
-   
     void Start()
     {
         GameManager.Instance.mathHandler = this;
@@ -29,7 +31,17 @@ public class MathHandler : MonoBehaviour
     void Update()
     {
         UpdateTheResult();
+        if (willEnd && seconds > -5f)
+        {
+            seconds -= Time.deltaTime;
+            if (seconds <= 0)
+            {
+                ProcessEnd();
+                willEnd = false;
+            }
+        }
     }
+
     public void GetBackBoxes()
     {
         SpaceHandler spaceHandler = null;
@@ -214,21 +226,29 @@ public class MathHandler : MonoBehaviour
         {
             resultText.text = " ";
         }
-        if (result == expectedResult)
+        if (result == expectedResult && !timeAdded)
         {
-            if (isInfiniteLevel)
-            {
-                GameManager.Instance.Score++;
-                GameManager.Instance.scoreCounter.UpdateScore();
-                countdownTimer.timeRemaining += GameManager.Instance.infiniteLevel.timeAdded;
-                GetBackBoxes();
-                SwapBoxes();
-                GameManager.Instance.infiniteLevel.GetNewSet();
-            }
-            else {
-                levelPopUp.SetActive(true);
-                GameManager.Instance.EndLevel();
-            }
+            countdownTimer.timeRemaining += GameManager.Instance.infiniteLevel.timeAdded;
+            willEnd = true;
+            timeAdded = true;
+        }
+    }
+    public void ProcessEnd()
+    {
+        timeAdded = false;
+        if (isInfiniteLevel)
+        {
+            GameManager.Instance.Score++;
+            GameManager.Instance.scoreCounter.UpdateScore();
+            GetBackBoxes();
+            SwapBoxes();
+            GameManager.Instance.infiniteLevel.GetNewSet();
+            seconds = 2f;
+        }
+        else
+        {
+            levelPopUp.SetActive(true);
+            GameManager.Instance.EndLevel();
         }
     }
 }

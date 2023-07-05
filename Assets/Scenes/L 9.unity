@@ -543,7 +543,7 @@ MonoBehaviour:
   temp3: 0
   expectedResult: 0
   result: 0
-  timeAdded: 10
+  timeAdded: 12
   unimage: {fileID: 317262956}
   boxList: []
 --- !u!4 &226094545
@@ -627,6 +627,14 @@ PrefabInstance:
     - target: {fileID: 3770541070262345149, guid: 624297511401f464fa938265ddde7ab5, type: 3}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450886635823698866, guid: 624297511401f464fa938265ddde7ab5, type: 3}
+      propertyPath: m_fontSize
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450886635823698866, guid: 624297511401f464fa938265ddde7ab5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 4820224440179780004, guid: 624297511401f464fa938265ddde7ab5, type: 3}
       propertyPath: unimage
@@ -1168,6 +1176,9 @@ MonoBehaviour:
   calculationArray: []
   boxList: []
   countdownTimer: {fileID: 1131212495}
+  willEnd: 0
+  timeAdded: 0
+  seconds: 2
 --- !u!4 &738244005
 Transform:
   m_ObjectHideFlags: 0
@@ -1488,6 +1499,7 @@ MonoBehaviour:
   mathHandler: {fileID: 738244004}
   infiniteLevel: {fileID: 0}
   scoreCounter: {fileID: 0}
+  countdownTimer: {fileID: 0}
   Score: 0
 --- !u!1001 &1263127205
 PrefabInstance:

@@ -19,6 +19,7 @@ public class CantDrag : MonoBehaviour, IDropHandler
             draggedObject.transform.SetParent(transform);
             boxHandler.ReturnToInitialPosition();
             boxHandler.inSpace = false;
+            GameManager.Instance.audioManager.PlayCantDragSound();
         }
         //GameManager.Instance.mathHandler.UpdateTheResult();
     }

@@ -58,7 +58,6 @@ public class InfiniteLevel : MonoBehaviour
                     temp3 = 0;
                 }
             }
-            GameManager.Instance.mathHandler.SwapBoxes();
         }
     }
 }
