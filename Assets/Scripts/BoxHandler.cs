@@ -178,7 +178,7 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         }
         draggedObject.transform.SetParent(unimage.transform);
         draggedObject.GetComponent<BoxHandler>().ReturnToInitialPosition();
-        //GameManager.Instance.mathHandler.UpdateTheResult();
+        GameManager.Instance.audioManager.PlaySwapSound();
     }
     #endregion
 }

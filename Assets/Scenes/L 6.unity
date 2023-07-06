@@ -353,6 +353,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4397498786864577506, guid: 63c303bac9ba6844fb7bd63c8cb555a6, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: db5e3089236881f40b65a0a70bf73479, type: 3}
     - target: {fileID: 4424083027262616211, guid: 63c303bac9ba6844fb7bd63c8cb555a6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -400
@@ -533,6 +537,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -645
       objectReference: {fileID: 0}
+    - target: {fileID: 8669232926292710929, guid: 63c303bac9ba6844fb7bd63c8cb555a6, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dffe9e55300331044a05e2b5071c19dc, type: 3}
     - target: {fileID: 9002610897369527323, guid: 63c303bac9ba6844fb7bd63c8cb555a6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -189
