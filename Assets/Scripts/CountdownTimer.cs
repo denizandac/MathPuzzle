@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class CountdownTimer : MonoBehaviour
 {
-    public float timeRemaining;
+    public float totalTime, timeRemaining;
     public TextMeshProUGUI timeText;
     public bool timerPause = false;
     public GameObject timeIsUp;
@@ -14,6 +14,7 @@ public class CountdownTimer : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.countdownTimer = this;
+        timeRemaining = totalTime;
     }
     void Update()
     {

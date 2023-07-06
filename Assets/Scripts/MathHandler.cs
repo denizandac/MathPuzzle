@@ -23,6 +23,7 @@ public class MathHandler : MonoBehaviour
     public float seconds = 2f;
     public GameObject invisImage;
     public CanvasGroup canvasGroup;
+    public LevelComplete levelComplete;
 
     void Start()
     {
@@ -259,6 +260,7 @@ public class MathHandler : MonoBehaviour
         else
         {
             levelPopUp.SetActive(true);
+            levelComplete.ShowStars();
             GameManager.Instance.EndLevel();
         }
         canvasGroup.blocksRaycasts = false;

@@ -20,14 +20,11 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private TextMeshProUGUI _textMesh;
 
-    private void Awake()
-    {
-        inSpace = false;
-        _initialPosition = transform.position;
-    }
 
     void Start()
     {
+        inSpace = false;
+        _initialPosition = transform.position;
         if (typeBool)
         {
             _textMesh.text = data.ToString();
