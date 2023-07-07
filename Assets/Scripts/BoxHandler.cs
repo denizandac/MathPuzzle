@@ -15,7 +15,7 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     public string sign;
     public int data, lastIndex;
     public GameObject unimage;
-
+    public bool isDragging = false;
     [SerializeField] private Vector3 _offset;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private TextMeshProUGUI _textMesh;
@@ -54,6 +54,7 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     #region DragDropMechanism
     public void OnPointerDown(PointerEventData eventData)
     {
+        isDragging = false;
         _offset = transform.position - Input.mousePosition;
         _canvasGroup.blocksRaycasts = false;
         if (transform.parent == unimage.transform)
@@ -72,12 +73,17 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnDrag(PointerEventData eventData)
     {
+        isDragging = true;
         transform.position = Input.mousePosition + _offset;
+        
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (isDragging)
+        {
         transform.position = Input.mousePosition + _offset;
+        }
         _canvasGroup.blocksRaycasts = true;
         if (transform.parent == unimage.transform)
         {
