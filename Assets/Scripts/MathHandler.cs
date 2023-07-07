@@ -19,7 +19,7 @@ public class MathHandler : MonoBehaviour
     public List<GameObject> boxList = new List<GameObject>();
     public CountdownTimer countdownTimer;
     public bool willEnd = false;
-    public bool timeAdded = false;
+    public bool timeAdded = false;                       
     public float seconds = 2f;
     public GameObject invisImage;
     public CanvasGroup canvasGroup;
