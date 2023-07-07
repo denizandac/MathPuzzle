@@ -34,7 +34,7 @@ public class CountdownTimer : MonoBehaviour
             timeText.text = "00:00";
             timeIsUp.SetActive(true);
             GameManager.Instance.EndLevel();
-            //Show fail pop up
+            GameManager.Instance.audioManager.PlayLoseSound();
         }
     }
     public void PauseTimer()

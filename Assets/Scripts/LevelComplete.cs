@@ -32,22 +32,21 @@ public class LevelComplete : MonoBehaviour
             star1.SetActive(true);
             star2.SetActive(true);
             star3.SetActive(true);
-            star1.transform.DOScale(1.3f, 0.8f).OnComplete(() => star2.transform.DOScale(1.3f, 0.8f).OnComplete(() => star3.transform.DOScale(1.3f, 0.8f)));
-            
+            star1.transform.DOScale(1.3f, 1f).OnComplete(() => star2.transform.DOScale(1.3f, 0.8f).OnComplete(() => star3.transform.DOScale(1.3f, 0.8f)));
         }
         else if(ratio >= 0.25f)
         {
             star1.SetActive(true);
             star2.SetActive(true);
             star3.SetActive(false);
-            star1.transform.DOScale(1.3f, 0.8f).OnComplete(() => star2.transform.DOScale(1.3f, 0.8f));
+            star1.transform.DOScale(1.3f, 1f).OnComplete(() => star2.transform.DOScale(1.3f, 0.8f));
         }
         else
         {
             star1.SetActive(true);
             star2.SetActive(false);
             star3.SetActive(false);
-            star1.transform.DOScale(1.3f, 0.8f);
+            star1.transform.DOScale(1.3f, 1f);
         }
     }
 }

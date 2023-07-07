@@ -241,6 +241,7 @@ public class MathHandler : MonoBehaviour
             }
             else
             {
+                GameManager.Instance.audioManager.PlayWinSound();
                 countdownTimer.PauseTimer();
             }
             willEnd = true;

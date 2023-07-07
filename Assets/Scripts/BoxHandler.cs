@@ -106,6 +106,7 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
             BoxHandler boxHandler = draggedObject.GetComponent<BoxHandler>();
             if (boxHandler.typeBool == typeBool)
             {
+                GameManager.Instance.audioManager.PlaySwapSound();
                 if (boxHandler.typeBool)
                 {
                     int temp = boxHandler.data;
@@ -180,11 +181,11 @@ public class BoxHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
             {
                 draggedObject.transform.DOShakePosition(0.5f, 3f, 10, 0f, true, false);
                 transform.DOShakePosition(0.5f, 3f, 10, 0f, true, false);
+                GameManager.Instance.audioManager.PlayCantDragSound();
             }
         }
         draggedObject.transform.SetParent(unimage.transform);
         draggedObject.GetComponent<BoxHandler>().ReturnToInitialPosition();
-        GameManager.Instance.audioManager.PlaySwapSound();
     }
     #endregion
 }

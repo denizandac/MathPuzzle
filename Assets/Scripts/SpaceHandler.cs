@@ -14,6 +14,12 @@ public class SpaceHandler : MonoBehaviour, IDropHandler
     public bool typeBool;
     public CanvasGroup canvasGroup;
     public GameObject unimage;
+    public AudioManager audioManager;
+    
+    void Start()
+    {
+        audioManager = GameManager.Instance.audioManager;
+    }
     void Update()
     {
         CheckIfOccupied();
@@ -42,6 +48,7 @@ public class SpaceHandler : MonoBehaviour, IDropHandler
             {
                 if (boxHandler.typeBool == typeBool)
                 {
+                    audioManager.PlaySwapSound();
                     draggedObject.transform.position = transform.position;
                     draggedObject.transform.SetParent(transform);
                     draggedObject.transform.DOScale(1.2f, 0.5f)
@@ -63,6 +70,7 @@ public class SpaceHandler : MonoBehaviour, IDropHandler
                 }
                 else
                 {
+                    audioManager.PlayCantDragSound();
                     draggedObject.transform.DOShakePosition(0.5f, 3f, 10, 0f, true, false);
                     draggedObject.transform.SetParent(unimage.transform);
                     boxHandler.ReturnToInitialPosition();
@@ -72,6 +80,7 @@ public class SpaceHandler : MonoBehaviour, IDropHandler
             }
             else
             {
+                audioManager.PlayCantDragSound();
                 draggedObject.transform.SetParent(unimage.transform);
                 boxHandler.ReturnToInitialPosition();
             }
